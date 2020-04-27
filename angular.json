@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bloodBankUI"
+    }
+  },
+  "defaultProject": "bloodBankUI",
+  "cli": {
+    "analytics": "08ae0a4f-951f-4d81-ae4b-199786129fa6"
+  }
 }
