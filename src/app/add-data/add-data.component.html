@@ -1,0 +1,182 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-9">
+        <div class="reg-options">
+                    <ul class="nav nav-tabs">
+                      <li><a href="#add" data-toggle="tab">add</a></li>
+                      <li class="active"><a href="#update" data-toggle="tab">Update</a></li>
+                    </ul>
+                  </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-9">
+            <div class="tab-content">
+                <div class="tab-pane" id="add">
+                    <form name="register_form" [formGroup]="formGroupAdd" (ngSubmit)="onSubmitadd()">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Doner</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form-group">
+                            <label class="col-form-label">Name(<font color="red">*</font>)</label>
+                            <input type="text" class="form-control borderClass" id="name" placeholder="Name" formControlName="name">
+                          </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                              <label class="col-form-label">Date Of Birth(<font color="red">*</font>)</label>
+                              <input type="date" class="form-control borderClass" id="DOB" placeholder="dd/mm/yy" formControlName="DOB">
+                            </div>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label class="col-form-label">Gender(<font color="red">*</font>)</label>
+                              <select class="form-control borderClass" id="gender" formControlName="gender">
+                                <option value="0" selected >Please Select </option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label class="col-form-label">Blood Group(<font color="red">*</font>)</label>
+                              <select class="form-control borderClass" id="bloodGroup" formControlName="blood_Group">
+                                <option value="0" selected >Please Select </option>
+                                <option *ngFor="let group of group" value="{{group.blood_Group}}">{{group.blood_Group}}</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label class="col-form-label">Phone(<font color="red">*</font>)</label>
+                              <input type="number" class="form-control borderClass" id="DOB" placeholder="phone" formControlName="phone">
+                            </div>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label class="col-form-label">Address(<font color="red">*</font>)</label>
+                              <input type="text" class="form-control borderClass" id="DOB" placeholder="address" formControlName="address">
+                            </div>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label class="col-form-label">District(<font color="red">*</font>)</label>
+                              <select class="form-control borderClass" id="District" formControlName="district">
+                                <option value="0" selected >Please Select </option>
+                                <option *ngFor="let dist of district" value="{{dist.district}}">{{dist.district}}</option>
+                              </select>
+                            </div>
+                          </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info" [disabled]="!formGroupAdd.valid" >Submit</button>
+                        </div>
+                      </form>
+                </div>
+                <div class="tab-pane active" id="update">
+                    
+                        <form name="filter_form"  [formGroup]="formGroupUpdate" (ngSubmit)="onSubmitFilter()">
+                          <div class="col-md-3 col-sm-3">
+                            <div class="form-group">
+                              <label class="col-form-label">Phone </label>
+                              <input type="number" class="form-control borderClass" placeholder="Phone" formControlName="phone">
+                            </div> 
+                          </div>
+                          <div class="col-md-3 col-sm-3">
+                            <div class="form-group">
+                              <label class="col-form-label">Blood Group </label>
+                                  <select class="form-control borderClass" id="assign_status1" formControlName="blood_Group">
+                                      <option value="0" selected >Please Select </option>
+                                      <option *ngFor="let group of group" value="{{group.blood_Group}}">{{group.blood_Group}}</option>
+                                    </select>
+                            </div> 
+                          </div>
+                          <div class="col-md-3 col-sm-3">
+                            <div class="form-group">
+                              <label class="col-form-label">DOB </label>
+                              <input type="date" class="form-control borderClass" placeholder="DOB" formControlName="DOB">
+                            </div> 
+                          </div>
+                            <div class="col-md-3 col-sm-3">
+                                <label style="visibility:hidden;">ABC</label>
+                                <div class="form-group txt-right">
+                                    <button type="submit" class="btn btn-info" [disabled]="!formGroupUpdate.valid" >Submit</button>
+                                </div>
+                            </div>
+                        </form><br>
+                        <h3 class="text-danger">{{msg}}</h3><br>
+                        <div *ngIf="cheak == true">
+                            <form name="register_form" [formGroup]="formGroupAdd" (ngSubmit)="onSubmitUpdate()">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Please update your detial</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="form-group">
+                                    <label class="col-form-label">Name(<font color="red">*</font>)</label>
+                                    <input type="text" class="form-control borderClass" id="name" placeholder="Name" formControlName="name">
+                                  </div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                      <label class="col-form-label">Date Of Birth(<font color="red">*</font>)</label>
+                                      <input type="date" class="form-control borderClass" id="DOB" placeholder="dd/mm/yy" formControlName="DOB">
+                                    </div>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-group">
+                                      <label class="col-form-label">Gender(<font color="red">*</font>)</label>
+                                      <select class="form-control borderClass" id="gender" formControlName="gender">
+                                        <option value="0" selected >Please Select </option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-group">
+                                      <label class="col-form-label">Blood Group(<font color="red">*</font>)</label>
+                                      <select class="form-control borderClass" id="bloodGroup" formControlName="blood_Group">
+                                        <option value="0" selected >Please Select </option>
+                                        <option *ngFor="let group of group" value="{{group.blood_Group}}">{{group.blood_Group}}</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-group">
+                                      <label class="col-form-label">Phone(<font color="red">*</font>)</label>
+                                      <input type="number" class="form-control borderClass" id="DOB" placeholder="phone" formControlName="phone">
+                                    </div>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-group">
+                                      <label class="col-form-label">Address(<font color="red">*</font>)</label>
+                                      <input type="text" class="form-control borderClass" id="DOB" placeholder="address" formControlName="address">
+                                    </div>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-group">
+                                      <label class="col-form-label">District(<font color="red">*</font>)</label>
+                                      <select class="form-control borderClass" id="District" formControlName="district">
+                                        <option value="0" selected >Please Select </option>
+                                        <option *ngFor="let dist of district" value="{{dist.district}}">{{dist.district}}</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                <div class="modal-footer">
+                                  <button class="btn btn-info" [disabled]="!formGroupAdd.valid" >Submit</button>
+                                </div>
+                              </form>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>

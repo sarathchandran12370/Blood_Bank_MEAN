@@ -1,0 +1,22 @@
+.formcontainer{
+    display: flex;
+    margin-left: 120px;
+    margin-top: 120px;
+    align-items: center;
+}
+
+.formbody{
+    display: flex;
+    width: 290px;
+    min-height: 200px;
+    background-color: white;
+    box-shadow:0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.header{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;      
+}

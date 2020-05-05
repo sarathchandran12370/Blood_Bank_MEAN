@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="formcontainer">
+    <div class="formbody">
+        <form style="width:100%;" [formGroup]="loginForm">
+            <div class="header">Welcome</div>
+            <div class="">
+                <div class="form-group" style="width:100%;">
+                    <input type="text" class="form-control borderClass" formControlName="email" matInput placeholder="Username">
+                </div>
+                <span *ngIf="isValid('email')">Username cannot be blank</span>
+            </div>
+            <div class="">
+                <div class="form-group" style="width:100%;">
+                    <input type="password" class="form-control borderClass" formControlName="password" matInput placeholder="Password">
+                </div>
+                <span *ngIf="isValid('password')">Password cannot be blank</span>
+            </div>
+            <div style="margin-top:40px;">
+                <button class="form-btn" (click)="login()" >Sign In</button>
+            </div>
+        </form>
+    </div>
+</div>

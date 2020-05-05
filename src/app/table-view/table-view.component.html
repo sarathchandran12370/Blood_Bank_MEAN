@@ -1,0 +1,91 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-9">
+            <div class="row">
+                <form name="filter_form" [formGroup]="formGroupFilter"(ngSubmit)="onSubmitSearch()">
+                    <div class="col-md-3 col-sm-3">
+                      <div class="form-group">
+                        <label class="col-form-label">Blood Group </label>
+                            <select class="form-control borderClass" id="assign_status1" formControlName="blood_Group">
+                                <option value="0" selected >Please Select </option>
+                                <option *ngFor="let group of group" value="{{group.blood_Group}}">{{group.blood_Group}}</option>
+                              </select>
+                      </div> 
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                      <div class="form-group">
+                        <label class="col-form-label">DOB </label>
+                        <select class="form-control borderClass" id="District" formControlName="district">
+                            <option value="0" selected >Please Select </option>
+                            <option *ngFor="let dist of district" value="{{dist.district}}">{{dist.district}}</option>
+                          </select>
+                      </div> 
+                    </div>
+                      <div class="col-md-3 col-sm-3">
+                          <label style="visibility:hidden;">ABC</label>
+                          <div class="form-group txt-right">
+                              <button type="submit" class="btn btn-info" [disabled]="!formGroupFilter.valid" >Search</button>
+                          </div>
+                      </div>
+                  </form>
+            </div>
+              <div class="row">
+                <h3 class="text-danger">{{msg}}</h3>
+              </div>
+              <div  *ngIf="cheak == true">
+                <table class="table table-striped table-bordered table-responsive" 
+                    >
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                age
+                            </th>
+                            <th>
+                                gender
+                            </th>
+                            <th>
+                              district
+                          </th>
+                          <th>
+                            Mob number
+                        </th>
+                      <th>
+                        blood group
+                    </th>
+                      <th>
+                        address
+                    </th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr *ngFor="let data of  users;let i=index;">
+                            <td>{{i+1}}</td>
+                            <td>{{data.name}}</td>
+                            <td>{{data.DOB}}</td>
+                            <td>{{data.gender}}</td>
+                            <td>{{data.district}}</td>
+                            <td>{{data.phone}}</td>
+                            <td>{{data.blood_group}}</td>
+                            <td>{{data.address}}</td>
+                        </tr>
+                    </tbody>
+                    <!-- <tfoot>
+                        <tr>
+                            <td colspan="8">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[25,50,100]"></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot> -->
+                </table>
+              </div>
+        </div>
+    </div>
+</div>
